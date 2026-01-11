@@ -10,7 +10,6 @@ This application helps to find the shortest route between two locations.
 Please add roads to build the network and compute the shortest path from the source node to destination site.
 """)
 
-
 # Session State Setup
 if "graph" not in st.session_state:
     st.session_state.graph = {}
@@ -26,8 +25,8 @@ locations_set = st.session_state.locations_set
 # Form to add new roads
 st.header("Add a New Road to the Network")
 with st.form("road_input_form"):  # unique form key
-    src = st.text_input("Start Location (Example: A, B, UiTM Jasin)", key="src_input")
-    dst = st.text_input("End Location (Example: C, D, Melaka Sentral)", key="dst_input")
+    src = st.text_input("From Location (Example: A, B, UiTM Jasin)", key="src_input")
+    dst = st.text_input("To Location (Example: C, D, Melaka Sentral)", key="dst_input")
     dist = st.text_input("Distance (km)", key="dist_input")
     submitted = st.form_submit_button("Submit Road")
 
