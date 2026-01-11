@@ -30,29 +30,27 @@ with st.form("road_input_form"):  # unique form key
     dist = st.text_input("Distance (km)", key="dist_input")
     submitted = st.form_submit_button("Submit Road")
 
-    if submitted:
-        if not src or not dst or not dist:
-            st.error("All fields are required!")
-        else:
-            try:
-                d = int(dist)
-                locations_set.add(src)
-                locations_set.add(dst)
+if submitted:
+    if not src or not dst or not dist:
+        st.error("All fields are required!")
+    else:
+        try:
+            d = float(dist)  # changed from int(dist) to float(dist)
+            locations_set.add(src)
+            locations_set.add(dst)
 
-                if src not in graph:
-                    graph[src] = []
-                if dst not in graph:
-                    graph[dst] = []
+            if src not in graph:
+                graph[src] = []
+            if dst not in graph:
+                graph[dst] = []
 
-                graph[src].append((dst, d))
-                graph[dst].append((src, d))
+            graph[src].append((dst, d))
+            graph[dst].append((src, d))
 
-                st.success(f"Added road: {src} ↔ {dst} ({d})")
-            except ValueError:
-                st.error("Distance must be an integer!")
-
-
-
+            st.success(f"Added road: {src} ↔ {dst} ({d})")
+        except ValueError:
+            st.error("Distance must be a number!") 
+        
 # Display current roads
 if graph:
     st.header("Current Road Network")
@@ -152,3 +150,4 @@ if locations_set:
             st.pyplot(plt)
 
 #Created by: Muhammad Daniel Bin Mohd Sahid
+
