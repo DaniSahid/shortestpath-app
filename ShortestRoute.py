@@ -1,13 +1,17 @@
+#Latest: 12 Jan 2026
+#By: Group 2 
+#Main Programmer: Daniel Sahid
+#Contributors: Danial Hakimi, Fara'ain, Syakilla, Maisarah
+
 import streamlit as st
 import heapq
 import networkx as nx
 import matplotlib.pyplot as plt
 
 st.set_page_config(page_title="Finding Shortest Route")
-st.title("Finding Route With Shortest Path")
+st.title("Find the Shortest Route")
 st.markdown("""
-This application helps to find the shortest route between two locations.
-Please add roads to build the network and compute the shortest path from the source node to destination site.
+Please add roads to build the network and compute the shortest path from the source node to destination node.
 """)
 
 # Session State Setup
@@ -21,9 +25,8 @@ if "visualize" not in st.session_state:
 graph = st.session_state.graph
 locations_set = st.session_state.locations_set
 
-
 # Form to add new roads
-st.header("Add a New Road to the Network")
+st.header("Add a new road to connect locations")
 with st.form("road_input_form"):  # unique form key
     src = st.text_input("From Location (Example: A, B, UiTM Jasin)", key="src_input")
     dst = st.text_input("To Location (Example: C, D, Melaka Sentral)", key="dst_input")
@@ -149,5 +152,5 @@ if locations_set:
             nx.draw_networkx_edges(G, pos, edge_color=edge_colors, width=3)
             st.pyplot(plt)
 
-#Created by: Muhammad Daniel Bin Mohd Sahid
+
 
