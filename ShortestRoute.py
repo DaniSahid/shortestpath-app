@@ -26,7 +26,7 @@ graph = st.session_state.graph
 locations_set = st.session_state.locations_set
 
 # Form to add new roads
-st.header("Add a new road to connect locations")
+st.header("Add a New Road to Connect Locations")
 with st.form("road_input_form"):  # unique form key
     src = st.text_input("From Location (Example: A, B, UiTM Jasin)", key="src_input")
     dst = st.text_input("To Location (Example: C, D, Melaka Sentral)", key="dst_input")
@@ -151,6 +151,7 @@ if locations_set:
             nx.draw_networkx_edge_labels(G, pos, edge_labels=labels)
             nx.draw_networkx_edges(G, pos, edge_color=edge_colors, width=3)
             st.pyplot(plt)
+
 
 
 
