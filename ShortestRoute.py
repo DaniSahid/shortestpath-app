@@ -145,10 +145,11 @@ if locations_set:
                     edge_colors.append("black")
 
             plt.figure(figsize=(8, 5))
-            nx.draw(G, pos, with_labels=True, node_color="gold", node_size=2000, font_size=12)
+            nx.draw(G, pos, with_labels=True, node_color="pink", node_size=2000, font_size=12)
             nx.draw_networkx_edge_labels(G, pos, edge_labels=labels)
             nx.draw_networkx_edges(G, pos, edge_color=edge_colors, width=3)
             st.pyplot(plt)
+
 
 
 
