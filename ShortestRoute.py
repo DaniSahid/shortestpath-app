@@ -73,7 +73,7 @@ if st.session_state.visualize and graph:
 
     pos = nx.spring_layout(G, seed=42)
     plt.figure(figsize=(8, 5))
-    nx.draw(G, pos, with_labels=True, node_color="peach", node_size=2000, font_size=12)
+    nx.draw(G, pos, with_labels=True, node_color="pink", node_size=2000, font_size=12)
     labels = nx.get_edge_attributes(G, "weight")
     nx.draw_networkx_edge_labels(G, pos, edge_labels=labels)
     st.pyplot(plt)
@@ -149,6 +149,7 @@ if locations_set:
             nx.draw_networkx_edge_labels(G, pos, edge_labels=labels)
             nx.draw_networkx_edges(G, pos, edge_color=edge_colors, width=3)
             st.pyplot(plt)
+
 
 
 
