@@ -25,7 +25,7 @@ if "visualize" not in st.session_state:
 graph = st.session_state.graph
 locations_set = st.session_state.locations_set
 
-# Form to add new roads
+# Form to add new roads/path
 st.header("Add a New Road to Connect Locations")
 with st.form("road_input_form"):  # unique form key
     src = st.text_input("From Location (Example: A, B, UiTM Jasin)", key="src_input")
@@ -60,7 +60,6 @@ if graph:
     for src, edges in graph.items():
         st.write(f"**{src}**: " + ", ".join([f"{dest} ({w})" for dest, w in edges]))
 
-
 # Button to Visualize Graph
 if st.button("Visualize Current Network"):
     st.session_state.visualize = True  
@@ -74,11 +73,10 @@ if st.session_state.visualize and graph:
 
     pos = nx.spring_layout(G, seed=42)
     plt.figure(figsize=(8, 5))
-    nx.draw(G, pos, with_labels=True, node_color="skyblue", node_size=2000, font_size=12)
+    nx.draw(G, pos, with_labels=True, node_color="gold", node_size=2000, font_size=12)
     labels = nx.get_edge_attributes(G, "weight")
     nx.draw_networkx_edge_labels(G, pos, edge_labels=labels)
     st.pyplot(plt)
-
 
 # Shortest Path Computation
 if locations_set:
@@ -147,10 +145,11 @@ if locations_set:
                     edge_colors.append("black")
 
             plt.figure(figsize=(8, 5))
-            nx.draw(G, pos, with_labels=True, node_color="skyblue", node_size=2000, font_size=12)
+            nx.draw(G, pos, with_labels=True, node_color="gold", node_size=2000, font_size=12)
             nx.draw_networkx_edge_labels(G, pos, edge_labels=labels)
             nx.draw_networkx_edges(G, pos, edge_color=edge_colors, width=3)
             st.pyplot(plt)
+
 
 
 
